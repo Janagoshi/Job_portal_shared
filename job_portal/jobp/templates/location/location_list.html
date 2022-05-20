@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <title>Location list</title>
+
+<h1>List of locations </h1>
+<h1>Seznam Míst</h1>
+<ul>
+    {% for item in object_list %}
+    <li> Region: {{ item.region }},  Město: {{ item.city }} </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
