@@ -1,6 +1,7 @@
 from django.db import models
-# from django.contrib.auth.models import User
 
+
+# from django.contrib.auth.models import User
 
 class Teacher(models.Model):
     language_choices = (
@@ -13,7 +14,7 @@ class Teacher(models.Model):
     )
     name = models.CharField(max_length=50)
     language = models.CharField(max_length=50, choices=language_choices)
-    price = models.CharField(max_length=10)
+    price = models.IntegerField()
     level = models.CharField(max_length=50, null=True, blank=True)
     about_me = models.CharField(max_length=250)
     # location = models.CharField(max_length=10)
@@ -23,3 +24,8 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Location(models.Model):
+    region = models.CharField(max_length=100)
+    city = models.CharField(max_length=60)
