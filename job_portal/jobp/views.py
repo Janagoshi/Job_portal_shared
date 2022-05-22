@@ -15,7 +15,7 @@ class TeacherCreateView(PermissionRequiredMixin, LoginRequiredMixin, SuccessMess
     permission_required = "jobp.add_teacher"
     model = models.Teacher
     template_name = "teacher/teacher_create.html"
-    fields = ["name", "language", "location", "level", "price", "about_me", "email"]
+    fields = ["name", "language", "location", "city", "level", "price", "about_me", "email"]
     success_url = reverse_lazy("index")
     success_message = "Data was updated successfully."
 
@@ -32,11 +32,17 @@ class TeacherUpdateView(PermissionRequiredMixin, LoginRequiredMixin, SuccessMess
 class TeacherListView(ListView):
     model = models.Teacher
     template_name = "teacher/teacher_list.html"
-    fields = ["name", "language", "location", "price", "level", "about_me", "email"]
+    fields = ["name", "language", "location", "city", "price", "level", "about_me", "email"]
     success_url = reverse_lazy("index")
 
 
 class LocationListView(ListView):
     template_name = "location/location_list.html"
-    fields = ["region", "city"]
-    model = models.Location
+    fields = ["location", "city"]
+    model = models.Teacher
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["test"] = "ahoj!"
+        context["location"] = models.Teacher.objects.all()
+        return context

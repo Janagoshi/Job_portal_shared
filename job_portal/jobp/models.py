@@ -34,7 +34,7 @@ class Teacher(models.Model):
     price = models.IntegerField()
     level = models.CharField(max_length=50, null=True, blank=True)
     about_me = models.CharField(max_length=250)
-    # location = models.CharField(max_length=10)
+    city = models.CharField(max_length=100, null=True, blank=True)
     # image = models.ImageField(upload_to="")
     # gender = models.CharField(max_length=10)
     email = models.CharField(max_length=50)
@@ -44,5 +44,5 @@ class Teacher(models.Model):
 
 
 class Location(models.Model):
-    region = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     city = models.CharField(max_length=60)
